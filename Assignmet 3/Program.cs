@@ -186,16 +186,6 @@ namespace Assignmet_3
             //    Console.WriteLine(result);
             /// }
 
-
-
-
-
-
-
-
-
-
-
             #endregion
 
             #region Question 4
@@ -213,13 +203,77 @@ namespace Assignmet_3
 
 
 
-
-
-
-
-
             #endregion
+
+            #region َQuestion 5
+            ///Input Validation with Loops
+            /// Create a password validation program with these requirements:
+            
+        
+            static void Main()
+            {
+                int attempts = 0;
+                string password;
+
+                do
+                {
+                    Console.Write("Enter password: ");
+                    password = Console.ReadLine();
+                    attempts++;
+
+                    bool hasUpper = false;
+                    bool hasDigit = false;
+                    bool hasSpace = false;
+
+                    if (password.Length < 8)
+                        Console.WriteLine("❌ Must be at least 8 characters.");
+
+                    foreach (char c in password)
+                    {
+                        if (char.IsUpper(c))
+                            hasUpper = true;
+
+                        if (char.IsDigit(c))
+                            hasDigit = true;
+
+                        if (char.IsWhiteSpace(c))
+                            hasSpace = true;
+                    }
+
+                    if (!hasUpper)
+                        Console.WriteLine("❌ Must contain at least one uppercase letter.");
+
+                    if (!hasDigit)
+                        Console.WriteLine("❌ Must contain at least one digit.");
+
+                    if (hasSpace)
+                        Console.WriteLine("❌ No spaces allowed.");
+
+                    if (password.Length >= 8 && hasUpper && hasDigit && !hasSpace)
+                    {
+                        Console.WriteLine("✅ Password accepted!");
+                        return;
+                    }
+
+                    Console.WriteLine($"Attempts left: {5 - attempts}");
+                    Console.WriteLine("----------------------");
+
+                } while (attempts < 5);
+
+                Console.WriteLine("🔒 Account locked");
+                #endregion
+            }
         }
+
+
+
+
+
+
+
+
+
     }
 }
+
 
