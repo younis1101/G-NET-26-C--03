@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using System.Net.Sockets;
 using System.Security.Claims;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Assignmet_3
 {
@@ -208,59 +209,135 @@ namespace Assignmet_3
             #region َQuestion 5
             ///Input Validation with Loops
             /// Create a password validation program with these requirements:
+
+
+            //static void Main()
+            //{
+            //    int attempts = 0;
+            //    string password;
+
+            //    do
+            //    {
+            //        Console.Write("Enter password: ");
+            //        password = Console.ReadLine();
+            //        attempts++;
+
+            //        bool hasUpper = false;
+            //        bool hasDigit = false;
+            //        bool hasSpace = false;
+
+            //        if (password.Length < 8)
+            //            Console.WriteLine("❌ Must be at least 8 characters.");
+
+            //        foreach (char c in password)
+            //        {
+            //            if (char.IsUpper(c))
+            //                hasUpper = true;
+
+            //            if (char.IsDigit(c))
+            //                hasDigit = true;
+
+            //            if (char.IsWhiteSpace(c))
+            //                hasSpace = true;
+            //        }
+
+            //        if (!hasUpper)
+            //            Console.WriteLine("❌ Must contain at least one uppercase letter.");
+
+            //        if (!hasDigit)
+            //            Console.WriteLine("❌ Must contain at least one digit.");
+
+            //        if (hasSpace)
+            //            Console.WriteLine("❌ No spaces allowed.");
+
+            //        if (password.Length >= 8 && hasUpper && hasDigit && !hasSpace)
+            //        {
+            //            Console.WriteLine("✅ Password accepted!");
+            //            return;
+            //        }
+
+            //        Console.WriteLine($"Attempts left: {5 - attempts}");
+            //        Console.WriteLine("----------------------");
+
+            //    } while (attempts < 5);
+
+            //    Console.WriteLine("🔒 Account locked");
+            #endregion
+
+            #region Question 6
+            /// Array Processing
+            ///Given an array of exam scores:
+
             
         
             static void Main()
             {
-                int attempts = 0;
-                string password;
+                int[] scores = { 95, 82, 47, 60, 73, 88, 91, 35, 55, 68, 77, 49 };
 
-                do
+                // (a) Display failing scores (below 50)
+                Console.WriteLine("Failing Scores (below 50):");
+                foreach (int score in scores)
                 {
-                    Console.Write("Enter password: ");
-                    password = Console.ReadLine();
-                    attempts++;
+                    if (score < 50)
+                        Console.WriteLine(score);
+                }
 
-                    bool hasUpper = false;
-                    bool hasDigit = false;
-                    bool hasSpace = false;
+                Console.WriteLine("----------------------");
 
-                    if (password.Length < 8)
-                        Console.WriteLine("❌ Must be at least 8 characters.");
-
-                    foreach (char c in password)
+                // (b) Find first score above 90 and stop searching
+                Console.WriteLine("First score above 90:");
+                foreach (int score in scores)
+                {
+                    if (score > 90)
                     {
-                        if (char.IsUpper(c))
-                            hasUpper = true;
-
-                        if (char.IsDigit(c))
-                            hasDigit = true;
-
-                        if (char.IsWhiteSpace(c))
-                            hasSpace = true;
+                        Console.WriteLine(score);
+                        break;
                     }
+                }
 
-                    if (!hasUpper)
-                        Console.WriteLine("❌ Must contain at least one uppercase letter.");
+                Console.WriteLine("----------------------");
 
-                    if (!hasDigit)
-                        Console.WriteLine("❌ Must contain at least one digit.");
+                // (c) Calculate class average excluding scores below 40
+                int sum = 0;
+                int count = 0;
 
-                    if (hasSpace)
-                        Console.WriteLine("❌ No spaces allowed.");
-
-                    if (password.Length >= 8 && hasUpper && hasDigit && !hasSpace)
+                foreach (int score in scores)
+                {
+                    if (score >= 40)
                     {
-                        Console.WriteLine("✅ Password accepted!");
-                        return;
+                        sum += score;
+                        count++;
                     }
+                }
 
-                    Console.WriteLine($"Attempts left: {5 - attempts}");
-                    Console.WriteLine("----------------------");
+                double average = count > 0 ? (double)sum / count : 0;
+                Console.WriteLine("Class Average (excluding below 40): " + average);
 
-                } while (attempts < 5);
+                Console.WriteLine("----------------------");
 
-                Console.WriteLine("🔒 Account locked");
+                // (d) Count grade ranges
+                int A = 0, B = 0, C = 0, D = 0, F = 0;
+
+                foreach (int score in scores)
+                {
+                    if (score >= 90 && score <= 100)
+                        A++;
+                    else if (score >= 80)
+                        B++;
+                    else if (score >= 70)
+                        C++;
+                    else if (score >= 60)
+                        D++;
+                    else
+                        F++;
+                }
+
+                Console.WriteLine("Grade Distribution:");
+                Console.WriteLine("A (90-100): " + A);
+                Console.WriteLine("B (80-89): " + B);
+                Console.WriteLine("C (70-79): " + C);
+                Console.WriteLine("D (60-69): " + D);
+                Console.WriteLine("F (Below 60): " + F);
                 #endregion
             }
         }
@@ -271,9 +348,18 @@ namespace Assignmet_3
 
 
 
-
-
     }
 }
+
+
+
+
+
+
+
+
+
+    
+
 
 
