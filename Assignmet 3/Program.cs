@@ -173,30 +173,53 @@ namespace Assignmet_3
             //        break;
             //}
             /// (b)A switch expression
-            int grade = int.Parse(Console.ReadLine());
+            //    int grade = int.Parse(Console.ReadLine());
 
-            string result = grade switch
-            {
-                >= 90 and <= 100 => "A",
-                >= 80 and < 90 => "B",
-                >= 70 and < 80 => "C",
-                _ => "Invalid Grade"
-            };
+            //    string result = grade switch
+            //    {
+            //        >= 90 and <= 100 => "A",
+            //        >= 80 and < 90 => "B",
+            //        >= 70 and < 80 => "C",
+            //        _ => "Invalid Grade"
+            //    };
+
+            //    Console.WriteLine(result);
+            /// }
+
+
+
+
+
+
+
+
+
+
+
+            #endregion
+
+            #region Question 4
+            /// Ternary Operator
+            ///Rewrite the following using only ternary operators(no if statements):
+
+            int age = int.Parse(Console.ReadLine());
+
+            string result = age < 5 ? "Free" :
+                            age <= 12 ? "30 LE" :
+                            age <= 59 ? "50 LE" :
+                            "25 LE";
 
             Console.WriteLine(result);
+
+
+
+
+
+
+
+
+            #endregion
         }
-
-
-
-
-
-
-
-
-
-
-
-        #endregion
     }
 }
 
