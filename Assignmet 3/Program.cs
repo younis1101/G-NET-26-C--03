@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Net.Sockets;
 using System.Text;
 
 namespace Assignmet_3
@@ -58,7 +59,63 @@ namespace Assignmet_3
 
             #endregion
 
+            #region Question 2
+            ///Ticket Pricing System
 
+            Console.Write("Enter age: ");
+            int age = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter day (1-7, 6=Fri, 7=Sat): ");
+            int day = int.Parse(Console.ReadLine());
+
+            Console.Write("Student? (yes/no): ");
+            bool isStudent = Console.ReadLine().ToLower() == "yes";
+
+            int price = 0;
+            bool isFree = false;
+            string breakdown = "";
+
+            if (age < 5)
+            {
+                price = 0;
+                isFree = true;
+                breakdown = "Free (under 5)";
+            }
+            else if (age >= 5 && age <= 12)
+            {
+                price = 30;
+                breakdown = "30 LE (Child)";
+            }
+            else if (age >= 13 && age <= 59)
+            {
+                price = 50;
+                breakdown = "50 LE (Adult)";
+            }
+            else if (age >= 60)
+            {
+                price = 25;
+                breakdown = "25 LE (Senior)";
+            }
+
+            if (!isFree && (day == 6 || day == 7))
+            {
+                price += 10;
+                breakdown += " + 10 LE weekend";
+            }
+
+            if (isStudent && !isFree)
+            {
+                int discount = (int)(price * 0.2);
+                price -= discount;
+                breakdown += $" - {discount} LE student discount";
+            }
+
+            Console.WriteLine($"Final price: {price} LE");
+            Console.WriteLine($"Breakdown: {breakdown}");
+
+
+
+            #endregion
         }
     }
 }
